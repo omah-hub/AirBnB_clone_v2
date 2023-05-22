@@ -1,5 +1,14 @@
 #!/usr/bin/python3
-"""Starts Flask web application"""
+"""Starts Flask web application
+Routes:
+    / - display "Hello HBNB!"
+    /hbnb - display "HBNB"
+    /c/<text> - display "C <text>"
+    /python/<text> - display "Python is cool"
+    /number/<n> - display n if integer
+    /number_template/<n> - display a HTML page if n is int
+    /number_odd_or_even/<n> - displays if a number is odd or even
+"""
 
 from flask import Flask, render_template
 
@@ -41,8 +50,14 @@ def number_n(n):
 
 @app.route('/number_template/<int:n>', strict_slashes=False)
 def number_template(n):
-    """display a HTML page if n is int"""
+    """displays a HTML page if n is int"""
     return render_template('5-number.html', n=n)
+
+
+@app.route('/number_odd_or_even/<int:n>', strict_slashes=False)
+def number_odd_or_even(n):
+    """displays a HTML page if n is int"""
+    return render_template('6-number_odd_or_even.html', n=n)
 
 
 if __name__ == "__main__":
